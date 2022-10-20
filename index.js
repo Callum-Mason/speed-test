@@ -50,7 +50,8 @@ async function writeData(download, upload, ping, resultid) {
 
 	try {
 		await writeApi.close()
-		console.log('FINISHED')
+		console.log('FINISHED - ' + new Date().toISOString())
+		process.exit(0)
 
 	} catch (e) {
 		console.error(e)
@@ -62,3 +63,8 @@ async function writeData(download, upload, ping, resultid) {
 }
 
 runspeedtest();
+
+
+process.on('exit', function (code) {
+    return console.log(`Process to exit with code ${code}`);
+});
